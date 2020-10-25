@@ -12,25 +12,6 @@ ChooseWnd::ChooseWnd(QWidget *parent) :
     ui->tableView->setModel(model);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-/*    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-   // connect(browse, SIGNAL(sig_way(QString)), this, SLOT(set_way_str(QString)));
-
-    ui->tableWidget->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-        ui->tableWidget->setDropIndicatorShown(true);
-        ui->tableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        ui->tableWidget->setDragDropMode(QAbstractItemView::DropOnly);
-        ui->tableWidget->setAlternatingRowColors(true);
-        ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui->tableWidget->setShowGrid(false);
-        ui->tableWidget->setAcceptDrops(true);
-        ui->tableWidget->setWordWrap(false);
-        ui->tableWidget->setStyleSheet("selection-background-color: yellow;"
-                      "selection-color: #002041;"
-                      "font-size: 75%;"
-                      );*/
-      //  ui->tableWidget->setStyle(new NoFocusProxyStyle());
-
 }
 
 ChooseWnd::~ChooseWnd()
@@ -99,10 +80,6 @@ bool ChooseWnd::loadFile(const QString &fileName)
 void ChooseWnd::set_name_to_table(QString str)
 {
     // установить в таблицу имя полученной картинки
-    //QString
-   // ui->tableWidget->insertRow(ui->tableWidget->rowCount() );
-   // ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(str));
-
     list_pix.append(str);
     model->add_row(str);
 
