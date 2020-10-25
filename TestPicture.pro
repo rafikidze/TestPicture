@@ -28,19 +28,21 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     choosewnd.cpp \
-    browse.cpp
+    viewdatamodel.cpp
 
 HEADERS += \
         mainwindow.h \
     choosewnd.h \
-    browse.h
+    viewdatamodel.h
 
 FORMS += \
         mainwindow.ui \
-    choosewnd.ui \
-    browse.ui
+    choosewnd.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc
