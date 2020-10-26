@@ -54,6 +54,8 @@ bool ChooseWnd::loadFile(const QString &fileName)
     QImageReader reader(fileName);
     QString name_file(get_file_name(fileName));
 
+    qDebug() << fileName;
+
     if(!name_file.isEmpty()) set_name_to_table(name_file);
     else ; // ВЫВОДИ ОШИБКУ
 
@@ -127,5 +129,16 @@ void ChooseWnd::on_pButDown_clicked()
 
         set_data_to_table(list_pix);
 
+    }
+}
+
+void ChooseWnd::on_pButDelete_clicked()
+{
+    int indxrow = ui->tableView->currentIndex().row();
+
+    if(!list_pix.isEmpty() && (list_pix.size() > indxrow))
+    {
+        list_pix.remove(indxrow);
+        set_data_to_table(list_pix);
     }
 }

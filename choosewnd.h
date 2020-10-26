@@ -39,6 +39,8 @@ private slots:
 
     void on_pButDown_clicked();
 
+    void on_pButDelete_clicked();
+
 private:
     Ui::ChooseWnd *ui;
     ViewDataModel *model;

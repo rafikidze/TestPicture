@@ -28,16 +28,21 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     choosewnd.cpp \
-    viewdatamodel.cpp
+    viewdatamodel.cpp \
+    workwnd.cpp \
+    moveitem.cpp
 
 HEADERS += \
         mainwindow.h \
     choosewnd.h \
-    viewdatamodel.h
+    viewdatamodel.h \
+    workwnd.h \
+    moveitem.h
 
 FORMS += \
         mainwindow.ui \
-    choosewnd.ui
+    choosewnd.ui \
+    workwnd.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

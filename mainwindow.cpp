@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     chooseWnd = new ChooseWnd(this);
+    workwnd = new WorkWnd(this);
 }
 
 MainWindow::~MainWindow()
@@ -17,4 +18,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_pButOpenChooseWnd_clicked()
 {
     chooseWnd->show();
+}
+
+void MainWindow::on_pButOpenWorkWnd_clicked()
+{
+    workwnd->show();
 }
