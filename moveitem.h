@@ -15,10 +15,10 @@ public:
     explicit MoveItem(QObject *parent = 0);
     ~MoveItem();
     void setScaledPixmap(const QPixmap &pixmap);
-signals:
-
+    void resizePix(bool);
 private:
     QPixmap m_pixmap;
+    QRect rect_pix;
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);

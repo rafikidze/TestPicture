@@ -19,9 +19,15 @@ public:
     explicit WorkWnd(QWidget *parent = nullptr);
     ~WorkWnd();
 
+private slots:
+    void on_pButMult2_clicked();
+
+    void on_pButDiv2_clicked();
+
 private:
     Ui::WorkWnd *ui;
     QGraphicsScene *scene;
+    QVector <MoveItem*> vec_moveitem;
 };
 
 

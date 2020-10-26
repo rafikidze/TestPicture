@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>935</width>
+    <width>1056</width>
     <height>766</height>
    </rect>
   </property>
@@ -22,6 +22,45 @@
      <height>601</height>
     </rect>
    </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>820</x>
+     <y>30</y>
+     <width>111</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Масштабирование</string>
+   </property>
+   <widget class="QPushButton" name="pButMult2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>х 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pButDiv2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>/ 2</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

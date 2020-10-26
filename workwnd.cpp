@@ -12,9 +12,7 @@ WorkWnd::WorkWnd(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     QPixmap pixmap("C:/Users/nto400.26/Pictures/4.jpg");
-    scene = new QGraphicsScene(this);   // Инициализируем графическую сцену
     scene = new QGraphicsScene(this);   // Инициализируем графическую сцену
     scene->setItemIndexMethod(QGraphicsScene::NoIndex); // настраиваем индексацию элементов
     ui->graphicsView->setScene(scene);  // Устанавливаем графическую сцену в graphicsView
@@ -27,11 +25,9 @@ WorkWnd::WorkWnd(QWidget *parent) :
     item->setPos(randomBetween(30, 470),    // Устанавливаем случайную позицию элемента
                  randomBetween(30, 470));
 
-  //  item->setFlag(QGraphicsItem::ItemIsMovable); // делаем элемент перемещаемым
-
     scene->addItem(item);   // Добавляем элемент на графическую сцену
 
-
+    vec_moveitem.append(item);
 }
 
 WorkWnd::~WorkWnd()
@@ -39,3 +35,22 @@ WorkWnd::~WorkWnd()
     delete ui;
 }
 
+
+void WorkWnd::on_pButMult2_clicked()
+{
+    if(!vec_moveitem.isEmpty())
+    {
+        vec_moveitem.at(0)->resizePix(true);
+    }
+    scene->update();
+}
+
+void WorkWnd::on_pButDiv2_clicked()
+{
+    if(!vec_moveitem.isEmpty())
+    {
+        vec_moveitem.at(0)->resizePix(false);
+    }
+    scene->update();
+
+}
