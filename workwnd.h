@@ -21,13 +21,16 @@ public:
 
 private slots:
     void on_pButMult2_clicked();
-
     void on_pButDiv2_clicked();
+    void slot_get_pix(QString);
+    void slot_del_pix(int);
+    void slot_change_up(int);
+    void slot_change_down(int);
 
 private:
     Ui::WorkWnd *ui;
     QGraphicsScene *scene;
-    QVector <MoveItem*> vec_moveitem;
+    QList <MoveItem*> vec_moveitem;
 };
 
 

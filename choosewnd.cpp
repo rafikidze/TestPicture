@@ -16,6 +16,7 @@ ChooseWnd::ChooseWnd(QWidget *parent) :
 
 ChooseWnd::~ChooseWnd()
 {
+    delete model;
     delete ui;
 }
 
@@ -54,29 +55,13 @@ bool ChooseWnd::loadFile(const QString &fileName)
     QImageReader reader(fileName);
     QString name_file(get_file_name(fileName));
 
-    qDebug() << fileName;
-
-    if(!name_file.isEmpty()) set_name_to_table(name_file);
+    if(!name_file.isEmpty())
+    {
+        set_name_to_table(name_file);
+        emit sig_send_pix(fileName);
+    }
     else ; // ВЫВОДИ ОШИБКУ
 
-
-    /*reader.setAutoTransform(true);
-    const QImage newImage = reader.read();
-    if (newImage.isNull()) {
-        QMessageBox::information(this, QGuiApplication::applicationDisplayName(),
-                                 tr("Cannot load %1: %2")
-                                 .arg(QDir::toNativeSeparators(fileName), reader.errorString()));
-        return false;
-    }
-//! [2]
-
-    setImage(newImage);
-
-    setWindowFilePath(fileName);
-
-    const QString message = tr("Opened \"%1\", %2x%3, Depth: %4")
-        .arg(QDir::toNativeSeparators(fileName)).arg(image.width()).arg(image.height()).arg(image.depth());
-    statusBar()->showMessage(message);*/
     return true;
 }
 void ChooseWnd::set_name_to_table(QString str)
@@ -94,8 +79,6 @@ QString ChooseWnd::get_file_name(const QString &fileName)
     QStringList fileObject;
     fileObject = fileName.split('/');
     name = fileObject[ fileObject .size() - 1 ];
-
-    qDebug() << name;
     return name;
 }
 
@@ -109,6 +92,7 @@ void ChooseWnd::on_pButUp_clicked()
         list_pix[indxrow-1] = temp;
 
         set_data_to_table(list_pix);
+        emit sig_change_up(indxrow);
 
     }
 }
@@ -128,6 +112,7 @@ void ChooseWnd::on_pButDown_clicked()
         list_pix[indxrow+1] = temp;
 
         set_data_to_table(list_pix);
+        emit sig_change_down(indxrow);
 
     }
 }
@@ -140,5 +125,6 @@ void ChooseWnd::on_pButDelete_clicked()
     {
         list_pix.remove(indxrow);
         set_data_to_table(list_pix);
+        emit sig_del_pix(indxrow);
     }
 }
