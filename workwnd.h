@@ -2,6 +2,7 @@
 #define WORKWND_H
 
 #include <QGraphicsScene>
+#include <QPointer>
 #include <QDialog>
 #include <QWidget>
 

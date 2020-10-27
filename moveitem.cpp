@@ -3,7 +3,7 @@
 MoveItem::MoveItem(QObject *parent) :
     QObject(parent), QGraphicsItem()
 {
-
+    setFlag(QGraphicsItem::ItemIsFocusable, true);
 }
 
 MoveItem::~MoveItem()
@@ -95,5 +95,6 @@ void MoveItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     // При отпускании мышью элемента
     // заменяем на обычный курсор стрелку
     this->setCursor(QCursor(Qt::ArrowCursor));
+
     Q_UNUSED(event);
 }

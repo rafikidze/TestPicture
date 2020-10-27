@@ -16,6 +16,7 @@ public:
     ~MoveItem();
     void setScaledPixmap(const QPixmap &pixmap);
     void resizePix(bool);
+
 private:
     QPixmap m_pixmap;
     QRect rect_pix;

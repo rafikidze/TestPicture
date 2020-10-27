@@ -12,7 +12,7 @@ WorkWnd::WorkWnd(QWidget *parent) :
 {
     ui->setupUi(this);
     scene = new QGraphicsScene(this);   // Инициализируем графическую сцену
-    scene->setItemIndexMethod(QGraphicsScene::BspTreeIndex); // настраиваем индексацию элементов
+    scene->setItemIndexMethod(QGraphicsScene::NoIndex); // настраиваем индексацию элементов
     ui->graphicsView->setScene(scene);  // Устанавливаем графическую сцену в graphicsView
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);    // Настраиваем рендер
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground); // Кэш фона
@@ -52,7 +52,7 @@ void WorkWnd::on_pButDiv2_clicked()
 void WorkWnd::slot_get_pix(QString name)
 {
     QPixmap pix(name);
-    MoveItem *item = new MoveItem();        // Создаём графический элемент
+    QPointer<MoveItem> item = new MoveItem();  // Создаём графический элемент
     item->setScaledPixmap(pix);
     item->setPos(randomBetween(30, 550),    // Устанавливаем случайную позицию элемента
                  randomBetween(30, 550));
@@ -79,6 +79,7 @@ void WorkWnd::slot_change_up(int index_)
        vec_moveitem.at(index_)->setZValue(vec_moveitem.at(index_-1)->zValue());
        vec_moveitem.at(index_-1)->setZValue(ZValue);
        vec_moveitem.move(index_, index_-1);
+       scene->items().move(index_, index_-1);
        scene->update();
     }
 
@@ -91,12 +92,22 @@ void WorkWnd::slot_change_down(int index_)
        vec_moveitem.at(index_)->setZValue(vec_moveitem.at(index_+1)->zValue());
        vec_moveitem.at(index_+1)->setZValue(ZValue);
        vec_moveitem.move(index_, index_+1);
+       scene->items().move(index_, index_+1);
        scene->update();
     }
 }
 
 void WorkWnd::slot_set_focus()
 {
-    qDebug() << "here";
+    int index = scene->focusItem()->zValue();
+    if(index == (vec_moveitem.size()-1)); // все ок, так и должно быть
+    else {
+        vec_moveitem.move(index, vec_moveitem.size()-1);
+        for (int i = index; i < vec_moveitem.size(); i++)
+            vec_moveitem.at(i)->setZValue(i);
+    }
+
+
+
 
 }

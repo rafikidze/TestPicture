@@ -22,7 +22,7 @@ ChooseWnd::~ChooseWnd()
 
 void ChooseWnd::on_pButOpen_clicked()
 {
-    QFileDialog dialog(this, tr("Open File"));
+    QFileDialog dialog(this, tr("Открыть файл"));
     initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
 
     while (dialog.exec() == QDialog::Accepted && !loadFile(dialog.selectedFiles().first())) {}
