@@ -86,6 +86,7 @@ void MoveItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     // При нажатии мышью на графический элемент
     // заменяем курсор на руку, которая держит этот элемента
     this->setCursor(QCursor(Qt::ClosedHandCursor));
+    emit sig_setFocus();
     Q_UNUSED(event);
 }
 

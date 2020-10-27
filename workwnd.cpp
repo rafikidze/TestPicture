@@ -18,11 +18,15 @@ WorkWnd::WorkWnd(QWidget *parent) :
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground); // Кэш фона
     ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
     scene->setSceneRect(ui->graphicsView->rect()); // Устанавливаем размер сцены
+
+
+
 }
 
 WorkWnd::~WorkWnd()
 {
-    vec_moveitem.clear();
+  //  scene->clear();
+  //  vec_moveitem.clear();
     delete scene;
     delete ui;
 }
@@ -54,9 +58,8 @@ void WorkWnd::slot_get_pix(QString name)
                  randomBetween(30, 550));
     item->setZValue(scene->items().size());
     scene->addItem(item);   // Добавляем элемент на графическую сцену
-
-    qDebug() << name <<  scene->items().first()->zValue();
     vec_moveitem.append(item);
+    connect(item, &MoveItem::sig_setFocus, this, &WorkWnd::slot_set_focus);
 
 }
 void WorkWnd::slot_del_pix(int index)
@@ -70,50 +73,30 @@ void WorkWnd::slot_del_pix(int index)
 }
 void WorkWnd::slot_change_up(int index_)
 {
-
-    for(int t = 0; t < scene->items().size(); t++)
+    if(vec_moveitem.size() > index_)
     {
-        qDebug() << scene->items().at(t)->zValue();
-    }
-
-
-    if(scene->items().size() > index_)
-    {
-       int index = scene->items().size() - index_;
-       qreal ZValue = scene->items().at(index)->zValue();
-
-          qDebug() << "ZValue1:" << ZValue << "index1:" << index
-                   << "ZValue2:" << scene->items().at(index-1)->zValue() << "index2:" << index-1   ;
-
-       scene->items().at(index)->setZValue(scene->items().at(index-1)->zValue());
-
-       qDebug() << "new ZValue index:" << scene->items().at(index)->zValue();
-
-       scene->items().at(index-1)->setZValue(ZValue);
-       qDebug() << "new ZValue index-1:" << scene->items().at(index-1)->zValue();
-
-
-       vec_moveitem.move(index, index-1);
-       scene->items().move(index, index-1);
+       qreal ZValue =  vec_moveitem.at(index_)->zValue();
+       vec_moveitem.at(index_)->setZValue(vec_moveitem.at(index_-1)->zValue());
+       vec_moveitem.at(index_-1)->setZValue(ZValue);
+       vec_moveitem.move(index_, index_-1);
        scene->update();
-
-
-
     }
 
 }
 void WorkWnd::slot_change_down(int index_)
 {
-    if(scene->items().size() > index_)
+    if(vec_moveitem.size() > index_)
     {
-       int index = scene->items().size() - index_;
-       qreal ZValue = scene->items().at(index)->zValue();
-       scene->items().at(index)->setZValue(scene->items().at(index-1)->zValue());
-       scene->items().at(index+1)->setZValue(ZValue);
-       vec_moveitem.move(index, index+1);
-       scene->items().move(index, index+1);
+       qreal ZValue =  vec_moveitem.at(index_)->zValue();
+       vec_moveitem.at(index_)->setZValue(vec_moveitem.at(index_+1)->zValue());
+       vec_moveitem.at(index_+1)->setZValue(ZValue);
+       vec_moveitem.move(index_, index_+1);
        scene->update();
     }
-
 }
 
+void WorkWnd::slot_set_focus()
+{
+    qDebug() << "here";
+
+}

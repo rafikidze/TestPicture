@@ -30,16 +30,14 @@ private slots:
     static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode);
     bool loadFile(const QString &fileName);
     QString get_file_name(const QString &fileName);
-   /* void dragLeaveEvent(QDragLeaveEvent *event);
-    void keyPressEvent(QKeyEvent *event);
-    void dropEvent(QDropEvent *event);
-    void dragMoveEvent(QDragMoveEvent *event);
-    void dragEnterEvent(QDragEnterEvent *event);*/
     void on_pButUp_clicked();
-
     void on_pButDown_clicked();
-
     void on_pButDelete_clicked();
+
+
+    void on_pButMult2_clicked();
+
+    void on_pButDiv2_clicked();
 
 private:
     Ui::ChooseWnd *ui;
@@ -50,6 +48,8 @@ signals:
     void sig_del_pix(int);
     void sig_change_up(int);
     void sig_change_down(int);
+    void sig_scale_mult_2();
+    void sig_scale_div_2();
  //   void keyboard(QKeyEvent *event);
  //   void dropped(const QMimeData* mimeData = 0);
   //  void moved(int old_row, int new_row);

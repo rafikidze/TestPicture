@@ -128,3 +128,13 @@ void ChooseWnd::on_pButDelete_clicked()
         emit sig_del_pix(indxrow);
     }
 }
+
+void ChooseWnd::on_pButMult2_clicked()
+{
+    emit sig_scale_mult_2();
+}
+
+void ChooseWnd::on_pButDiv2_clicked()
+{
+    emit sig_scale_div_2();
+}

@@ -24,6 +24,8 @@ private:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+signals:
+    void sig_setFocus();
 
 public slots:
 };

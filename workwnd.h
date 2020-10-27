@@ -26,6 +26,7 @@ private slots:
     void slot_del_pix(int);
     void slot_change_up(int);
     void slot_change_down(int);
+    void slot_set_focus();
 
 private:
     Ui::WorkWnd *ui;
