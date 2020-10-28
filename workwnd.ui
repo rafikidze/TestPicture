@@ -26,8 +26,8 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>691</width>
-         <height>571</height>
+         <width>0</width>
+         <height>0</height>
         </size>
        </property>
        <property name="verticalScrollBarPolicy">

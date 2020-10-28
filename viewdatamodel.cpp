@@ -93,30 +93,10 @@ void ViewDataModel::add_row(QString str)
     ar.append(str);
     endResetModel();
 }
-
-/////////////////////////////////////
-/// \brief ViewDataModel::clear_table
-/// Функция очищает массив данных
-void ViewDataModel::clear_table()
-{
-    beginResetModel();
-    ar.clear();
-    endResetModel();
-}
-
 //////////////////////////////////////
-/// \brief ViewDataModel::remove_row
-/// \param row номер строки
-/// Функция удаляет определенную строку
-void ViewDataModel::remove_row(int row)
-{
-    beginResetModel();
-    ar.remove(row);
-    endResetModel();
-}
-
-
-
+/// \brief ViewDataModel::change_data
+/// \param new_ar
+/// Функция заменяет все элементы массива данных
 void ViewDataModel::change_data(QVector<QString> new_ar)
 {
     beginResetModel();

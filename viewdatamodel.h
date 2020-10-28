@@ -19,9 +19,7 @@ public:
     QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
     void change_data(QVector<QString>);
     void add_row(QString);
-    void clear_table();
-    void remove_row(int row);
-    QVector<QString>  ar;
+    QVector<QString> ar;
 
 };
 

@@ -8,6 +8,9 @@
 #include <QDebug>
 #include <QCursor>
 
+/////////////////////////////////////////////////
+/// \brief The MoveItem class
+/// Класс элемента графической сцены
 class MoveItem : public QObject, public QGraphicsItem
 {
     Q_OBJECT
@@ -16,7 +19,6 @@ public:
     ~MoveItem();
     void setScaledPixmap(const QPixmap &pixmap);
     void resizePix(bool);
-
 private:
     QPixmap m_pixmap;
     QRect rect_pix;
@@ -27,8 +29,6 @@ private:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 signals:
     void sig_setFocus();
-
-public slots:
 };
 
 #endif // MOVEITEM_H

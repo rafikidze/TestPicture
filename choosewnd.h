@@ -5,8 +5,7 @@
 #include <QImageReader>
 #include <QImageWriter>
 #include <QFileDialog>
-
-
+#include <QMessageBox>
 #include <QDialog>
 
 #include "viewdatamodel.h"
@@ -15,6 +14,9 @@ namespace Ui {
 class ChooseWnd;
 }
 
+//////////////////////////////
+/// \brief The ChooseWnd class
+/// Класс окна выбора
 class ChooseWnd : public QDialog
 {
     Q_OBJECT
@@ -33,16 +35,13 @@ private slots:
     void on_pButUp_clicked();
     void on_pButDown_clicked();
     void on_pButDelete_clicked();
-
-
     void on_pButMult2_clicked();
-
     void on_pButDiv2_clicked();
-
+    void slot_set_focus(int);
 private:
     Ui::ChooseWnd *ui;
     ViewDataModel *model;
-    QVector <QString> list_pix; // возможно заменить QString сразу на QImage
+    QVector <QString> list_pix;
 signals:
     void sig_send_pix(QString);
     void sig_del_pix(int);
@@ -50,10 +49,6 @@ signals:
     void sig_change_down(int);
     void sig_scale_mult_2();
     void sig_scale_div_2();
- //   void keyboard(QKeyEvent *event);
- //   void dropped(const QMimeData* mimeData = 0);
-  //  void moved(int old_row, int new_row);
-
 
 };
 

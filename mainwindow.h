@@ -10,6 +10,9 @@ namespace Ui {
 class MainWindow;
 }
 
+////////////////////////////////
+/// \brief The MainWindow class
+/// Класс главного окна
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -20,7 +23,6 @@ public:
 
 private slots:
     void on_pButOpenChooseWnd_clicked();
-
     void on_pButOpenWorkWnd_clicked();
 
 private:

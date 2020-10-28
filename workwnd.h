@@ -12,6 +12,9 @@ namespace Ui {
 class WorkWnd;
 }
 
+/////////////////////////////
+/// \brief The WorkWnd class
+/// Класс рабочего окна
 class WorkWnd : public QDialog
 {
     Q_OBJECT
@@ -33,6 +36,8 @@ private:
     Ui::WorkWnd *ui;
     QGraphicsScene *scene;
     QList <MoveItem*> vec_moveitem;
+signals:
+    void sig_send_focus(int);
 };
 
 
