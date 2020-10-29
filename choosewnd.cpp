@@ -38,7 +38,6 @@ void ChooseWnd::on_pButOpen_clicked()
 /// Функция выбора изображения
 void ChooseWnd::initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
 {
-
     static bool firstDialog = true;
 
     if (firstDialog) {
@@ -56,7 +55,7 @@ void ChooseWnd::initializeImageFileDialog(QFileDialog &dialog, QFileDialog::Acce
     dialog.setMimeTypeFilters(mimeTypeFilters);
     dialog.selectMimeTypeFilter("image/jpeg");
     if (acceptMode == QFileDialog::AcceptSave)
-        dialog.setDefaultSuffix("jpg");
+        dialog.setDefaultSuffix("jpg"); 
 }
 
 ////////////////////////////////////////////////
@@ -67,18 +66,20 @@ void ChooseWnd::initializeImageFileDialog(QFileDialog &dialog, QFileDialog::Acce
 bool ChooseWnd::loadFile(const QString &fileName)
 {
     QString name_file(get_file_name(fileName));
-    if(!name_file.isEmpty())
+    // 29.10.20
+    // --------
+    QPixmap check_pix(fileName);
+    if (check_pix.isNull())
     {
+        QMessageBox::warning(this,("Уведомление"),("Не удалось открыть файл\n"));
+        return false;
+    }
+    else {
         set_name_to_table(name_file);
         emit sig_send_pix(fileName);
         return true;
     }
-    else
-    {
-        QMessageBox::warning(this,trUtf8("Уведомление"),
-                               trUtf8("Не удалось открыть файл\n"));
-        return false;
-    }
+    // ---------------------
 }
 
 //////////////////////////////////////////////////

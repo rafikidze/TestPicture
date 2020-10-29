@@ -83,7 +83,8 @@ void MoveItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 /// Устанавливает позицию графического элемента в сцене через координаты курсора
 void MoveItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    this->setPos(mapToScene(event->pos()));
+    // 29.10.20
+    this->moveBy((event->pos()-event->lastPos()).x(),(event->pos()-event->lastPos()).y());
 }
 
 ////////////////////////////////////
