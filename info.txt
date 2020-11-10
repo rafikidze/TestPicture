@@ -1,0 +1,1 @@
+https://www.qxorm.com/qxorm_en/manual.html#manual_95 - MongoDB to Qt
