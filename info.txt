@@ -3,3 +3,25 @@
 https://www.qxorm.com/qxorm_en/manual.html#manual_95 
 https://www.qxorm.com/qxorm_en/home.html
 -----------------------------------------
+- Типы данных в Qt
+------------------
+Для переносимости кода
+qint8	8-битное знаковое целое
+quint8	8-битное беззнаковое целое
+qint16	16-битное знаковое целое
+quint16	16-битное беззнаковое целое
+qint32	32-битное знаковое целое
+quint32	32-битное беззнаковое целое
+qint64	64-битное знаковое целое
+quint64	64-битное беззнаковое целое
+quintptr	Беззнаковый указатель (32 или 64 бита)
+qptrdiff	Знаковый указатель (32 или 64 бита)
+qreal	Везде double(64); float(32) только для архитектуры ARM
+Для краткой записи типов
+uchar	unsigned char
+uint	unsigned int
+ulong	unsigned long
+ushort	unsigned short
+qlonglong	long long int или __int64
+qulonglong	unsigned long long int или unsigned __int64
+-------------------------------------------------------
