@@ -25,3 +25,9 @@ ushort	unsigned short
 qlonglong	long long int или __int64
 qulonglong	unsigned long long int или unsigned __int64
 -------------------------------------------------------
+- Запустить exe-шник 
+---------------------
+QProcess proc;
+proc.start("Emulator.exe");
+proc.waitForFinished();
+-------------------------------------------------------
