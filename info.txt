@@ -31,3 +31,6 @@ QProcess proc;
 proc.start("Emulator.exe");
 proc.waitForFinished();
 -------------------------------------------------------
+- Картография Qt
+----------------
+https://doc.qt.io/qt-5/qtlocation-mapviewer-example.html (QML, дома попробуй)
